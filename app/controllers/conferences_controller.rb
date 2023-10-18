@@ -11,7 +11,11 @@ class ConferencesController < BaseController
     render json: @conference, status: :ok
   end
 
-  def create; end
+  def create
+    conference = ::ConferenceCreator.call(params[:file])
+
+    render json: conference, status: :ok
+  end
 
   def update
     render json: @conference, status: :ok

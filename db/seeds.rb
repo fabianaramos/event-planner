@@ -7,3 +7,16 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require 'csv'
+
+conference = Conference.create!(name: 'Dev Conference')
+
+Track.create!(name: 'Track 1', conference: conference)
+Track.create!(name: 'Track 2', conference: conference)
+
+CSV.foreach('public/lectures.csv') do |row|
+  duration = row.pop(1).first
+  name = row.join(',')
+  duration = 5 if duration == 'lightning'
+  lecture = Lecture.create!(name: name, duration: duration)
+end

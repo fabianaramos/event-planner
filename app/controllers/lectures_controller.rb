@@ -12,13 +12,14 @@ class LecturesController < BaseController
   end
 
   def create
-    p params, 'paramsssss'
-    lectures = Lecture.process_file(params[:file])
+    lecture = Lecture.create!(create_params)
 
-    render json: { "palestras": 'oiiii' }, status: :ok
+    render json: lecture, status: :ok
   end
 
   def update
+    @lecture.update!(update_params)
+
     render json: @lecture, status: :ok
   end
 
@@ -27,6 +28,14 @@ class LecturesController < BaseController
   end
 
   private
+
+  def create_params
+    params.require(:lecture).permit(:name, :conference_id, :duration)
+  end
+
+  def update_params
+    params.require(:lecture).permit(:name, :conference_id, :track_id, :starts_at, :ends_at)
+  end
 
   def set_lecture
     @lecture = Lecture.find(params[:id])
