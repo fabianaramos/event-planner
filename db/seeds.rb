@@ -18,5 +18,5 @@ CSV.foreach('public/lectures.csv') do |row|
   duration = row.pop(1).first
   name = row.join(',')
   duration = 5 if duration == 'lightning'
-  lecture = Lecture.create!(name: name, duration: duration)
+  lecture = conference.lectures.create!(name: name, duration: duration)
 end

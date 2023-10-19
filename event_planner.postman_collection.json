@@ -1,0 +1,420 @@
+{
+	"info": {
+		"_postman_id": "5f586a1a-2bc7-441a-8996-69c6e986b714",
+		"name": "event_planner",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17766948"
+	},
+	"item": [
+		{
+			"name": "Tracks",
+			"item": [
+				{
+					"name": "Index Tracks",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{event_planner_url}}/conferences/:conferences_id/tracks",
+							"host": [
+								"{{event_planner_url}}"
+							],
+							"path": [
+								"conferences",
+								":conferences_id",
+								"tracks"
+							],
+							"variable": [
+								{
+									"key": "conferences_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Track",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{event_planner_url}}/conferences/:conferences_id/tracks/:id",
+							"host": [
+								"{{event_planner_url}}"
+							],
+							"path": [
+								"conferences",
+								":conferences_id",
+								"tracks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "conferences_id",
+									"value": "1"
+								},
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Conferences",
+			"item": [
+				{
+					"name": "Index Conferences",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{event_planner_url}}/conferences",
+							"host": [
+								"{{event_planner_url}}"
+							],
+							"path": [
+								"conferences"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Conference",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"conference\": {\n        \"name\": \"Rails Conf\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{event_planner_url}}/conferences",
+							"host": [
+								"{{event_planner_url}}"
+							],
+							"path": [
+								"conferences"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Conference",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{event_planner_url}}/conferences/:id",
+							"host": [
+								"{{event_planner_url}}"
+							],
+							"path": [
+								"conferences",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Conference",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"conference\": {\n        \"name\": \"Ruby Conf\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{event_planner_url}}/conferences/:id",
+							"host": [
+								"{{event_planner_url}}"
+							],
+							"path": [
+								"conferences",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Destroy Conference",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{event_planner_url}}/conferences/:id",
+							"host": [
+								"{{event_planner_url}}"
+							],
+							"path": [
+								"conferences",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Lectures",
+			"item": [
+				{
+					"name": "Index Lectures",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{event_planner_url}}/conferences/:id/lectures",
+							"host": [
+								"{{event_planner_url}}"
+							],
+							"path": [
+								"conferences",
+								":id",
+								"lectures"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Lecture",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"lecture\": {\n        \"name\": \"Prawn: gerando PDFs com Ruby on Rails\",\n        \"duration\": \"45\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{event_planner_url}}/conferences/:conference_id/lectures",
+							"host": [
+								"{{event_planner_url}}"
+							],
+							"path": [
+								"conferences",
+								":conference_id",
+								"lectures"
+							],
+							"variable": [
+								{
+									"key": "conference_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Lectures Batch",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/fabianaramos/developer/stant/event-planner/lectures.csv"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{event_planner_url}}/conferences/:conference_id/lectures/create_batch",
+							"host": [
+								"{{event_planner_url}}"
+							],
+							"path": [
+								"conferences",
+								":conference_id",
+								"lectures",
+								"create_batch"
+							],
+							"variable": [
+								{
+									"key": "conference_id",
+									"value": "1s"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Lecture",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{event_planner_url}}/conferences/:conferences_id/lectures/:id",
+							"host": [
+								"{{event_planner_url}}"
+							],
+							"path": [
+								"conferences",
+								":conferences_id",
+								"lectures",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "conferences_id",
+									"value": "1"
+								},
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Lecture",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"lecture\": {\n        \"name\": \"RoR: notificações com ActionCable\",\n        \"duration\": \"60\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{event_planner_url}}/conferences/:conferences_id//lectures/:id",
+							"host": [
+								"{{event_planner_url}}"
+							],
+							"path": [
+								"conferences",
+								":conferences_id",
+								"",
+								"lectures",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "conferences_id",
+									"value": "1"
+								},
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Destroy Lecture",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{event_planner_url}}/conferences/:conferences_id/lectures/:id",
+							"host": [
+								"{{event_planner_url}}"
+							],
+							"path": [
+								"conferences",
+								":conferences_id",
+								"lectures",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "conferences_id",
+									"value": "1"
+								},
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "event_planner_url",
+			"value": "localhost:3000"
+		}
+	]
+}

@@ -1,24 +1,46 @@
-# README
+## Event Planner
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Pre-requisites
 
-Things you may want to cover:
+- install [docker](https://docs.docker.com/get-docker/)
 
-* Ruby version
+# Starting the application
 
-* System dependencies
+- Copy and paste the following command on your terminal:
 
-* Configuration
+```bash
+$ docker compose up
+```
 
-* Database creation
+# Setting up the database
 
-* Database initialization
+- Copy and paste the following commands on your terminal:
 
-* How to run the test suite
+```bash
+$ docker ps
+$ docker exec -it <CONTAINER_ID> rails db:create
+$ docker exec -it <CONTAINER_ID> rails db:migrate
+$ docker exec -it <CONTAINER_ID> rails db:seed
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+# Running tests
 
-* Deployment instructions
+- Copy and paste the following command on your terminal:
 
-* ...
+```bash
+$ docker exec -it <CONTAINER_ID> rspec
+```
+
+# Acessing application
+
+- http://localhost:3000 on browser (frontend application)
+
+or
+
+- install [postman](https://www.postman.com/downloads/) and import the [postman collection](https://github.com/fabianaramos/event-planner/blob/main/event_planner.postman_collection) to send requests (api)
+
+# Libraries
+
+- gem [active_model_serializers](https://github.com/rails-api/active_model_serializers)
+- gem [factory_bot_rails](https://github.com/thoughtbot/factory_bot)
+- gem [rspec-rails](https://github.com/rspec/rspec-rails/tree/6-0-maintenance)
