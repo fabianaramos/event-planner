@@ -1,0 +1,19 @@
+<%= form_with model: [ @conference, @conference.lectures.build ] do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <% @conference.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </p>
+  <p>
+    <%= form.label :duration %><br>
+    <%= form.select :duration, [60, 45, 30, 5] %>
+    <% @conference.errors.full_messages_for(:duration).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </p>
+  <p>
+    <%= form.submit "Save" %>
+  </p>
+<% end %>

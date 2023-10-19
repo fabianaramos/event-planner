@@ -1,0 +1,54 @@
+<div style="display: flex; flex-direction: row; align-items: center; gap: 8px;">  
+  <h1><%= @conference.name || "Conference"%><h1>
+  <div style="display: flex; flex-direction: row; align-items: center; gap: 8px;">  
+    <%= button_to "Edit", edit_conference_path(@conference), method: :get %>
+    <%= button_to "Destroy", conference_path(@conference), method: :delete %>
+  </div>
+</div>
+
+
+<h2>Add lecture:</h2>
+<%= render 'lectures/form' %>
+
+<h2>Create multiple lectures:</h2>
+<%= form_with model: @lecture, :url => conference_lectures_create_batch_path(@conference) do |form| %>
+  <div>
+    <%= form.file_field :file %>
+  </div>
+
+  <div>
+    <%= form.submit "Send" %>
+  </div>
+<% end %>
+
+
+<h1>Tracks</h1>
+<div>
+  <% @conference.tracks.each do |track| %>
+    <h2><%= track.name %></h2>
+    <% track.lectures.where('starts_at < ?', '12:00'.to_time).order(:starts_at).each do |lecture| %>
+      <div style="display: flex; flex-direction: row; align-items: center; gap: 8px;">
+        <p><%= lecture.starts_at.strftime("%H:%M") %> - <%= lecture.name %></p>
+        <%= button_to "Edit", edit_conference_lecture_path(@conference, lecture), method: :get %>
+        <%= button_to "Destroy", conference_lecture_path(@conference, lecture), method: :delete %>
+      </div>
+    <%end%>
+    <div>
+      <p>12:00 - Almoço</p>
+    </div>
+
+    <% track.lectures.where('starts_at > ?', '12:00'.to_time).order(:starts_at).each do |lecture| %>
+      <div>
+        <div style="display: flex; flex-direction: row; align-items: center; gap: 8px;">
+          <p><%= lecture.starts_at.strftime("%H:%M") %> - <%= lecture.name %></p>
+          <%= button_to "Edit", edit_conference_lecture_path(@conference, lecture), method: :get %>
+          <%= button_to "Destroy", conference_lecture_path(@conference, lecture), method: :delete %>
+        </div>
+      </div>
+    <%end%>
+
+    <div>
+      <p>17:00 - Evento de Networking</p>
+    </div>
+  <%end%>
+</div>

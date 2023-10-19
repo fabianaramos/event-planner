@@ -7,7 +7,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  root 'conferences#index'
 
-  resources :conferences
-  resources :lectures
+  resources :conferences do
+    post 'lectures/create_batch', to: 'lectures#create_batch'
+
+    resources :lectures
+    resources :tracks, only: %i[index show]
+  end
 end

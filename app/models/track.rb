@@ -1,6 +1,8 @@
 class Track < ApplicationRecord
   belongs_to :conference
-  has_many :lectures, dependent: :destroy
+  has_many :lectures, lambda {
+                        order(starts_at: :asc)
+                      }
 
   def duration
     lectures.pluck(:duration).reduce(0, :+)

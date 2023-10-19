@@ -1,0 +1,21 @@
+<h1>Update Lecture</h1>
+
+<%= form_with url: conference_lecture_path, scope: :lecture, method: :put do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <% @lecture.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </p>
+  <p>
+    <%= form.label :duration %><br>
+    <%= form.select :duration, [60, 45, 30, 5] %>
+    <% @lecture.errors.full_messages_for(:duration).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </p>
+  <p>
+    <%= form.submit "Save" %>
+  </p>
+<% end %>

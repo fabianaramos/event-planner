@@ -1,0 +1,11 @@
+<h1>Conferences<h1>
+
+<ul>
+  <% @conferences.each do |conference| %>
+    <li>
+    <%= link_to conference.name || "Conference", conference %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New conference", new_conference_path %>

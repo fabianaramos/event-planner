@@ -4,11 +4,15 @@ class Lecture < ApplicationRecord
   SMALL_DURATION = 30
   LIGHTNING_DURATION = 15
 
+  DURATIONS = [60, 45, 30, 5]
+
   belongs_to :conference
   belongs_to :track, optional: true
 
   validates :duration, :name, presence: true
-  validate :ensure_lecture_will_not_be_overlapped
+  validates :duration, inclusion: { in: DURATIONS }
+
+  after_destroy :destroy_track_if_it_is_empty
 
   scope :long, -> { where(duration: 60) }
   scope :medium, -> { where(duration: 45) }
@@ -20,12 +24,19 @@ class Lecture < ApplicationRecord
                      where('starts_at >= ?', range.first.to_time).where('ends_at <= ?', range.last.to_time)
                    }
 
+  def starts_at_formatted
+    starts_at.strftime('%H:%M') if starts_at.present?
+  end
+
+  def ends_at_formatted
+    ends_at.strftime('%H:%M') if ends_at.present?
+  end
+
   private
 
-  def ensure_lecture_will_not_be_overlapped
-    range = Range.new starts_at, ends_at
-    overlaps = track.lectures.in_range(range)
+  def destroy_track_if_it_is_empty
+    return if track.nil?
 
-    errors.add(:starts_at, :invalid) unless overlaps.empty?
+    track.destroy unless track.lectures.exists?
   end
 end
