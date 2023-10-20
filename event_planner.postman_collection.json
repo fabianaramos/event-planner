@@ -282,6 +282,7 @@
 							"formdata": [
 								{
 									"key": "file",
+									"description": "Accepted format: CSV",
 									"type": "file",
 									"src": "/Users/fabianaramos/developer/stant/event-planner/lectures.csv"
 								}
@@ -301,7 +302,7 @@
 							"variable": [
 								{
 									"key": "conference_id",
-									"value": "1s"
+									"value": "1"
 								}
 							]
 						}

@@ -10,7 +10,7 @@
 <h2>Add lecture:</h2>
 <%= render 'lectures/form' %>
 
-<h2>Create multiple lectures:</h2>
+<h2>Create multiple lectures (CSV file):</h2>
 <%= form_with model: @lecture, :url => conference_lectures_create_batch_path(@conference) do |form| %>
   <div>
     <%= form.file_field :file %>
