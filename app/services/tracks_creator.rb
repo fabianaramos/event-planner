@@ -9,7 +9,6 @@ class TracksCreator < ApplicationService
   end
 
   def lectures
-    p @conference.lectures.not_assigned, 'DEBUG:NOT ASSIGNED!'
     @conference.lectures.not_assigned
   end
 
@@ -64,7 +63,6 @@ class TracksCreator < ApplicationService
         lecture = @conference.lectures.long.not_assigned.first
         track.lectures << lecture
         lecture.update!(starts_at: initial_time, ends_at: current_time)
-        p lecture.name, lecture.starts_at
         initial_time = lecture.ends_at
       end
 
