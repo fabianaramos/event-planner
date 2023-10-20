@@ -2,6 +2,8 @@
 
 Event planner is an application for organizing conferences, setting a time for your lectures, obtaining their duration and generating a schedule. You can create lectures by uploading a CSV file or manually.
 
+Feel free to use the [CSV file](https://github.com/fabianaramos/event-planner/blob/main/public/lectures.csv) to testing create lectures by upload.
+
 # Pre-requisites
 
 - install [docker](https://docs.docker.com/get-docker/)
