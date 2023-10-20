@@ -1,5 +1,7 @@
 ## Event Planner
 
+Event planner is an application for organizing conferences, setting a time for your lectures, obtaining their duration and generating a schedule. You can create lectures by uploading a CSV file or manually.
+
 # Pre-requisites
 
 - install [docker](https://docs.docker.com/get-docker/)
